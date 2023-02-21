@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_200"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white">
+
+        <TextView
+            style="@style/TitleTextViewStyle"
+            android:text="@string/app_name" />
+
+        <ImageView
+            android:id="@+id/main_setting_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:onClick="onClick"
+            android:src="@mipmap/ic_setting" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp">
+
+        <EditText
+            android:id="@+id/main_search_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/et_main_search_background"
+            android:hint="@string/search_hanzi_hint"
+            android:maxLength="1" />
+
+        <ImageView
+            android:id="@+id/main_search_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:onClick="onClick"
+            android:src="@mipmap/search" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <TextView
+            android:id="@+id/main_pinyin_tv"
+            style="@style/MainTextViewStyle"
+            android:drawableTop="@mipmap/m_pinyin"
+            android:text="@string/pinyin_search" />
+
+        <TextView
+            android:id="@+id/main_bushou_tv"
+            style="@style/MainTextViewStyle"
+            android:drawableTop="@mipmap/m_bushou"
+            android:text="@string/bushou_search" />
+
+        <TextView
+            android:id="@+id/main_chengyu_tv"
+            style="@style/MainTextViewStyle"
+            android:drawableTop="@mipmap/m_chengyu"
+            android:text="@string/chengyu_search" />
+
+        <TextView
+            android:id="@+id/main_tuwen_tv"
+            style="@style/MainTextViewStyle"
+            android:drawableTop="@mipmap/m_xiangji"
+            android:text="@string/tuwen_search" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/one_sentence_every_day"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/main_sentence_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="14sp"
+            tools:text="基于部首，拼音或者图文识别等方式，获取所查找的汉字的详情内容，包括五笔，笔画，解释等。同时也能够让用户输入四字成语，查询成语的详情内容，包括同义词，反义词，拼音，
+引用，解释，例句等" />
+
+    </LinearLayout>
+
+</LinearLayout>

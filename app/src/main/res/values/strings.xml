@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name" translatable="false">中华字典</string>
+    <string name="search_hanzi_hint" translatable="false">请输入查询汉字</string>
+    <string name="pinyin_search" translatable="false">拼音查询</string>
+    <string name="bushou_search" translatable="false">部首查询</string>
+    <string name="chengyu_search" translatable="false">成语查询</string>
+    <string name="tuwen_search" translatable="false">图文查询</string>
+    <string name="one_sentence_every_day" translatable="false">每日一句</string>
+</resources>

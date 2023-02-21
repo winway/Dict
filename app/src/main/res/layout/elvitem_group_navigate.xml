@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/elvitem_group_navigate_ll"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/elvitem_group_navigate_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        tools:text="A" />
+
+</LinearLayout>

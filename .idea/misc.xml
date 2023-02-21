@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndroidStudioProjects/Dict/app/src/main/res/drawable/et_main_search_background.xml" value="0.1335" />
+        <entry key="..\:/AndroidStudioProjects/Dict/app/src/main/res/drawable/gvitem_word_background.xml" value="0.15" />
+        <entry key="..\:/AndroidStudioProjects/Dict/app/src/main/res/layout/activity_base_search.xml" value="0.24947916666666667" />
+        <entry key="..\:/AndroidStudioProjects/Dict/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/AndroidStudioProjects/Dict/app/src/main/res/layout/activity_pinyin_search.xml" value="0.22826086956521738" />
+        <entry key="..\:/AndroidStudioProjects/Dict/app/src/main/res/layout/elvitem_child_navigate.xml" value="0.24947916666666667" />
+        <entry key="..\:/AndroidStudioProjects/Dict/app/src/main/res/layout/elvitem_group_navigate.xml" value="0.24947916666666667" />
+        <entry key="..\:/AndroidStudioProjects/Dict/app/src/main/res/layout/elvitem_parent_navigate.xml" value="0.24947916666666667" />
+        <entry key="..\:/AndroidStudioProjects/Dict/app/src/main/res/layout/prgvitem_word.xml" value="0.24947916666666667" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
