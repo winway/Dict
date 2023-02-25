@@ -1,5 +1,6 @@
 package com.example.dict.common;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -10,10 +11,12 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import com.example.dict.R;
+import com.example.dict.WordDetailActivity;
 import com.example.dict.adapter.NaviListAdapter;
 import com.example.dict.adapter.WordGridAdapter;
 import com.example.dict.bean.PinyinAndBushouMappingBean;
 import com.example.dict.bean.PinyinAndBushouWordBean;
+import com.example.dict.db.DBManager;
 import com.example.dict.utils.AssetsUtils;
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
@@ -105,9 +108,23 @@ public abstract class BaseSearchActivity extends BaseActivity {
         mWordPRGV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+                PinyinAndBushouWordBean.ResultBean.ListBean bean = mWordGridAdapterData.get(i);
+                Intent intent = WordDetailActivity.newIntent(getBaseContext(), bean.getZi());
+                startActivity(intent);
             }
         });
+    }
+
+    private void refreshWordGridAdapter(List<PinyinAndBushouWordBean.ResultBean.ListBean> listBean) {
+        if (mCurrentPage == 1) {
+            mWordGridAdapterData.clear();
+            mWordGridAdapterData.addAll(listBean);
+            mWordGridAdapter.notifyDataSetChanged();
+        } else {
+            mWordGridAdapterData.addAll(listBean);
+            mWordGridAdapter.notifyDataSetChanged();
+            mWordPRGV.onRefreshComplete();
+        }
     }
 
     private void initNaviListAdapter() {
@@ -218,21 +235,31 @@ public abstract class BaseSearchActivity extends BaseActivity {
 
         mTotalPage = resultBean.getTotalpage();
 
-        if (mCurrentPage == 1) {
-            mWordGridAdapterData.clear();
-            mWordGridAdapterData.addAll(listBean);
-            mWordGridAdapter.notifyDataSetChanged();
-        } else {
-            mWordGridAdapterData.addAll(listBean);
-            mWordGridAdapter.notifyDataSetChanged();
-            mWordPRGV.onRefreshComplete();
-        }
+        refreshWordGridAdapter(listBean);
+
+        saveWord2DB(listBean);
+    }
+
+    private void saveWord2DB(List<PinyinAndBushouWordBean.ResultBean.ListBean> listBean) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                DBManager.insertWordMany(listBean);
+                Log.i(TAG, "run: " + listBean.size());
+            }
+        }).start();
     }
 
     @Override
     public void onError(Throwable ex, boolean isOnCallback) {
         super.onError(ex, isOnCallback);
+
+        List<PinyinAndBushouWordBean.ResultBean.ListBean> beanList = queryWordFromDB(getSelectedPinyinOrBushou(), mCurrentPage, mPageSize);
+
+        refreshWordGridAdapter(beanList);
     }
+
+    protected abstract List<PinyinAndBushouWordBean.ResultBean.ListBean> queryWordFromDB(String pinyinOrBushou, int currentPage, int pageSize);
 
     public void onClick(View view) {
         switch (view.getId()) {

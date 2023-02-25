@@ -4,6 +4,8 @@ import android.app.Application;
 
 import org.xutils.x;
 
+import com.example.dict.db.DBManager;
+
 /**
  * @PackageName: com.example.dict.common
  * @ClassName: MyApplication
@@ -16,5 +18,6 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         x.Ext.init(this);
+        DBManager.initDB(this);
     }
 }

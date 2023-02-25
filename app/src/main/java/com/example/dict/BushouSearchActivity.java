@@ -1,7 +1,12 @@
 package com.example.dict;
 
+import com.example.dict.bean.PinyinAndBushouWordBean;
 import com.example.dict.common.BaseSearchActivity;
 import com.example.dict.common.URLHelper;
+
+import java.util.List;
+
+import com.example.dict.db.DBManager;
 
 public class BushouSearchActivity extends BaseSearchActivity {
 
@@ -23,5 +28,10 @@ public class BushouSearchActivity extends BaseSearchActivity {
     @Override
     protected String getAssetFilename() {
         return "bushou.json";
+    }
+
+    @Override
+    protected List<PinyinAndBushouWordBean.ResultBean.ListBean> queryWordFromDB(String pinyinOrBushou, int currentPage, int pageSize) {
+        return DBManager.queryWordByBushou(pinyinOrBushou, currentPage, pageSize);
     }
 }

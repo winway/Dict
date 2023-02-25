@@ -2,6 +2,7 @@ package com.example.dict;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -40,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
             case R.id.main_setting_iv:
                 break;
             case R.id.main_search_iv:
+                String word = mSearchET.getText().toString();
+                if (!TextUtils.isEmpty(word)) {
+                    intent = WordDetailActivity.newIntent(this, word);
+                    startActivity(intent);
+                }
                 break;
             case R.id.main_pinyin_tv:
                 intent.setClass(this, PinyinSearchActivity.class);
