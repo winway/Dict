@@ -23,7 +23,7 @@ import java.util.List;
 public class WordDetailActivity extends BaseActivity {
 
     private static final String TAG = "WordDetailActivity";
-    private static final String ARG_WORD = "word";
+    private static final String KEY_WORD = "word";
 
     private ImageView mCollectIV;
     private TextView mWordTV;
@@ -44,7 +44,7 @@ public class WordDetailActivity extends BaseActivity {
 
     public static Intent newIntent(Context context, String word) {
         Intent intent = new Intent(context, WordDetailActivity.class);
-        intent.putExtra(ARG_WORD, word);
+        intent.putExtra(KEY_WORD, word);
         return intent;
     }
 
@@ -54,7 +54,7 @@ public class WordDetailActivity extends BaseActivity {
         setContentView(R.layout.activity_word_detail);
 
         Intent intent = getIntent();
-        mWord = intent.getStringExtra(ARG_WORD);
+        mWord = intent.getStringExtra(KEY_WORD);
 
         initView();
 

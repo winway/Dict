@@ -7,11 +7,13 @@
         <entry key="..\:/AndroidStudioProjects/Dict/app/src/main/res/drawable/gvitem_word_background.xml" value="0.15" />
         <entry key="..\:/AndroidStudioProjects/Dict/app/src/main/res/layout/activity_base_search.xml" value="0.24947916666666667" />
         <entry key="..\:/AndroidStudioProjects/Dict/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/AndroidStudioProjects/Dict/app/src/main/res/layout/activity_ocr_word.xml" value="0.24947916666666667" />
         <entry key="..\:/AndroidStudioProjects/Dict/app/src/main/res/layout/activity_pinyin_search.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidStudioProjects/Dict/app/src/main/res/layout/activity_word_detail.xml" value="0.24947916666666667" />
         <entry key="..\:/AndroidStudioProjects/Dict/app/src/main/res/layout/elvitem_child_navigate.xml" value="0.24947916666666667" />
         <entry key="..\:/AndroidStudioProjects/Dict/app/src/main/res/layout/elvitem_group_navigate.xml" value="0.24947916666666667" />
         <entry key="..\:/AndroidStudioProjects/Dict/app/src/main/res/layout/elvitem_parent_navigate.xml" value="0.24947916666666667" />
+        <entry key="..\:/AndroidStudioProjects/Dict/app/src/main/res/layout/gvitem_word.xml" value="0.24947916666666667" />
         <entry key="..\:/AndroidStudioProjects/Dict/app/src/main/res/layout/lvitem_word_detail_extend.xml" value="0.2484375" />
         <entry key="..\:/AndroidStudioProjects/Dict/app/src/main/res/layout/prgvitem_word.xml" value="0.24947916666666667" />
       </map>

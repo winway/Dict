@@ -47,7 +47,7 @@ public class WordGridAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder holder = null;
         if (view == null) {
-            view = LayoutInflater.from(mContext).inflate(R.layout.prgvitem_word, null);
+            view = LayoutInflater.from(mContext).inflate(R.layout.gvitem_word, null);
             holder = new ViewHolder(view);
             view.setTag(holder);
         } else {
@@ -63,7 +63,7 @@ public class WordGridAdapter extends BaseAdapter {
         TextView mWordTV;
 
         public ViewHolder(View view) {
-            mWordTV = view.findViewById(R.id.prgvitem_word_tv);
+            mWordTV = view.findViewById(R.id.gvitem_word_tv);
         }
     }
 }

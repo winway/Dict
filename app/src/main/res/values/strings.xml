@@ -7,4 +7,5 @@
     <string name="tuwen_search" translatable="false">图文查询</string>
     <string name="one_sentence_every_day" translatable="false">每日一句</string>
     <string name="word_detail" translatable="false">文字详情</string>
+    <string name="ocr">图片识别</string>
 </resources>

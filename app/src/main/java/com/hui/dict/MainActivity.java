@@ -19,8 +19,14 @@ import com.baidu.ocr.sdk.OnResultListener;
 import com.baidu.ocr.sdk.exception.OCRError;
 import com.baidu.ocr.sdk.model.AccessToken;
 import com.baidu.ocr.ui.camera.CameraActivity;
+import com.google.gson.Gson;
+import com.hui.dict.bean.OcrResultBean;
 import com.hui.dict.utils.FileUtil;
 import com.hui.dict.utils.RecognizeService;
+import com.hui.dict.utils.RegexpUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -103,6 +109,32 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onResult(String result) {
                             Log.i(TAG, "onResult: " + result);
+                            OcrResultBean ocrResultBean = new Gson().fromJson(result, OcrResultBean.class);
+                            List<OcrResultBean.WordsResultBean> wordResultList = ocrResultBean.getWords_result();
+
+                            ArrayList<String> wordList = new ArrayList<>();
+
+                            if (wordResultList != null) {
+                                for (int i = 0; i < wordResultList.size(); i++) {
+                                    OcrResultBean.WordsResultBean wordResultBean = wordResultList.get(i);
+                                    String words = wordResultBean.getWords();
+                                    words = RegexpUtils.replaceAll(words, "[^\\u4e00-\\u9fa5]");
+
+                                    for (int j = 0; j < words.length(); j++) {
+                                        String word = String.valueOf(words.charAt(j));
+                                        if (!wordList.contains(word)) {
+                                            wordList.add(word);
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (wordList.size() == 0) {
+                                Toast.makeText(MainActivity.this, "无法识别图中文字", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Intent intent = OcrWordActivity.newIntent(MainActivity.this, wordList);
+                                startActivity(intent);
+                            }
                         }
                     });
         }
