@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.hui.dict.bean.ChengyuBean;
 import com.hui.dict.bean.PinyinAndBushouWordBean;
 import com.hui.dict.bean.WordBean;
 
@@ -149,5 +150,55 @@ public class DBManager {
         }
 
         return null;
+    }
+
+    public static void insertChengyu(ChengyuBean.ResultBean bean) {
+        ContentValues values = new ContentValues();
+        values.put("chengyu", bean.getName());
+        values.put("pinyin", bean.getPinyin());
+        values.put("chuchu", bean.getChuchu());
+        values.put("xxjs", String.join("|", bean.getXxsy()));
+        values.put("tongyi", String.join("|", bean.getJyc()));
+        values.put("fanyi", String.join("|", bean.getFyc()));
+
+        sDatabase.insert("chengyu", null, values);
+    }
+
+    public static ChengyuBean.ResultBean queryChengyuDetail(String chengyu) {
+
+        Log.e(TAG, "queryChengyu: " + chengyu);
+
+        String querySql = "select * from chengyu where chengyu=?";
+
+        Cursor cursor = sDatabase.rawQuery(querySql, new String[]{chengyu});
+        if (cursor.moveToFirst()) {
+            String pingyin = cursor.getString(cursor.getColumnIndex("pinyin"));
+            String chuchu = cursor.getString(cursor.getColumnIndex("chuchu"));
+            String xxjs = cursor.getString(cursor.getColumnIndex("xxjs"));
+            String tongyi = cursor.getString(cursor.getColumnIndex("tongyi"));
+            String fanyi = cursor.getString(cursor.getColumnIndex("fanyi"));
+
+            List<String> xxjsList = new ArrayList<String>(Arrays.asList(xxjs.split("\\|")));
+            List<String> tongyiList = new ArrayList<String>(Arrays.asList(tongyi.split("\\|")));
+            List<String> fanyiList = new ArrayList<String>(Arrays.asList(fanyi.split("\\|")));
+
+            return new ChengyuBean.ResultBean(chengyu, pingyin, chuchu, xxjsList, tongyiList, fanyiList);
+        }
+
+        return null;
+    }
+
+    public static List<String> queryChengyuList() {
+        List<String> chengyuList = new ArrayList<>();
+
+        String querySql = "select chengyu from chengyu";
+
+        Cursor cursor = sDatabase.rawQuery(querySql, null);
+        while (cursor.moveToNext()) {
+            String chengyu = cursor.getString(cursor.getColumnIndex("chengyu"));
+            chengyuList.add(chengyu);
+        }
+
+        return chengyuList;
     }
 }

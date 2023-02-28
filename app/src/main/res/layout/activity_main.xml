@@ -38,7 +38,7 @@
             android:id="@+id/main_search_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/et_main_search_background"
+            android:background="@drawable/et_search_background"
             android:hint="@string/search_hanzi_hint"
             android:maxLength="1" />
 

@@ -4,17 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="3dp">
+    android:padding="5dp">
 
     <TextView
-        android:id="@+id/gvitem_word_tv"
-        android:layout_width="wrap_content"
+        android:id="@+id/gvitem_chengyu_tv"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/gvitem_word_background"
-        android:gravity="center"
-        android:textColor="@color/red"
-        android:textSize="30sp"
-        tools:text="王" />
+        android:textSize="16sp"
+        tools:text="啊啊啊啊" />
 
 </LinearLayout>

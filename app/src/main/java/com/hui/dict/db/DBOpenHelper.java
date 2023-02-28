@@ -41,6 +41,15 @@ public class DBOpenHelper extends SQLiteOpenHelper {
                 "jijie text, " +
                 "xiangjie text)";
         sqLiteDatabase.execSQL(createSql);
+
+        createSql = "create table chengyu(_id integer primary key autoincrement, " +
+                "chengyu varchar(10) unique not null, " +
+                "pinyin varchar(4), " +
+                "chuchu text, " +
+                "xxjs text, " +
+                "tongyi text, " +
+                "fanyi text)";
+        sqLiteDatabase.execSQL(createSql);
     }
 
     @Override
