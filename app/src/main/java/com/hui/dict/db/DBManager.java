@@ -223,6 +223,20 @@ public class DBManager {
         return false;
     }
 
+    public static List<String> queryCollectWordList() {
+        List<String> result = new ArrayList<>();
+
+        String sql = "select word from collect_word";
+
+        Cursor cursor = sDatabase.rawQuery(sql, null);
+        while (cursor.moveToNext()) {
+            String word = cursor.getString(cursor.getColumnIndex("word"));
+            result.add(word);
+        }
+
+        return result;
+    }
+
     public static void insertCollectChengyu(String chengyu) {
         ContentValues values = new ContentValues();
         values.put("chengyu", chengyu);
@@ -242,5 +256,19 @@ public class DBManager {
             return true;
         }
         return false;
+    }
+
+    public static List<String> queryCollectChengyuList() {
+        List<String> result = new ArrayList<>();
+
+        String sql = "select chengyu from collect_chengyu";
+
+        Cursor cursor = sDatabase.rawQuery(sql, null);
+        while (cursor.moveToNext()) {
+            String chengyu = cursor.getString(cursor.getColumnIndex("chengyu"));
+            result.add(chengyu);
+        }
+
+        return result;
     }
 }
