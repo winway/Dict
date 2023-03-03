@@ -201,4 +201,46 @@ public class DBManager {
 
         return chengyuList;
     }
+
+    public static void insertCollectWord(String word) {
+        ContentValues values = new ContentValues();
+        values.put("word", word);
+
+        sDatabase.insert("collect_word", null, values);
+    }
+
+    public static void deleteCollectWord(String word) {
+        String sql = "delete from collect_word where word=?";
+        sDatabase.execSQL(sql, new String[]{word});
+    }
+
+    public static boolean isWordCollected(String word) {
+        String sql = "select * from collect_word where word=?";
+        Cursor cursor = sDatabase.rawQuery(sql, new String[]{word});
+        if (cursor.getCount() > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public static void insertCollectChengyu(String chengyu) {
+        ContentValues values = new ContentValues();
+        values.put("chengyu", chengyu);
+
+        sDatabase.insert("collect_chengyu", null, values);
+    }
+
+    public static void deleteCollectChengyu(String chengyu) {
+        String sql = "delete from collect_chengyu where chengyu=?";
+        sDatabase.execSQL(sql, new String[]{chengyu});
+    }
+
+    public static boolean isChengyuCollected(String chengyu) {
+        String sql = "select * from collect_chengyu where chengyu=?";
+        Cursor cursor = sDatabase.rawQuery(sql, new String[]{chengyu});
+        if (cursor.getCount() > 0) {
+            return true;
+        }
+        return false;
+    }
 }

@@ -50,6 +50,12 @@ public class DBOpenHelper extends SQLiteOpenHelper {
                 "tongyi text, " +
                 "fanyi text)";
         sqLiteDatabase.execSQL(createSql);
+
+        createSql = "create table collect_word(_id integer primary key autoincrement, word varchar(4) unique not null)";
+        sqLiteDatabase.execSQL(createSql);
+
+        createSql = "create table collect_chengyu(_id integer primary key autoincrement, chengyu varchar(4) unique not null)";
+        sqLiteDatabase.execSQL(createSql);
     }
 
     @Override

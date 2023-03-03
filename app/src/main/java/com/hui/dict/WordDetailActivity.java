@@ -11,11 +11,11 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.hui.dict.bean.WordBean;
 import com.hui.dict.common.BaseActivity;
 import com.hui.dict.common.URLHelper;
 import com.hui.dict.db.DBManager;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +42,9 @@ public class WordDetailActivity extends BaseActivity {
     private ArrayAdapter<String> mListAdapter;
     private List<String> mListAdapterData;
 
+    private boolean isCollected;
+    private boolean needCollect;
+
     public static Intent newIntent(Context context, String word) {
         Intent intent = new Intent(context, WordDetailActivity.class);
         intent.putExtra(KEY_WORD, word);
@@ -55,6 +58,9 @@ public class WordDetailActivity extends BaseActivity {
 
         Intent intent = getIntent();
         mWord = intent.getStringExtra(KEY_WORD);
+
+        isCollected = DBManager.isWordCollected(mWord);
+        needCollect = isCollected;
 
         initView();
 
@@ -81,6 +87,16 @@ public class WordDetailActivity extends BaseActivity {
         mExtBasicTV = findViewById(R.id.word_detail_extend_basic_tv);
         mExtDetailTV = findViewById(R.id.word_detail_extend_detail_tv);
         mExtendLV = findViewById(R.id.word_detail_extend_lv);
+
+        setupCollectStyle();
+    }
+
+    private void setupCollectStyle() {
+        if (needCollect) {
+            mCollectIV.setImageResource(R.mipmap.ic_collection_fs);
+        } else {
+            mCollectIV.setImageResource(R.mipmap.ic_collection);
+        }
     }
 
     @Override
@@ -140,6 +156,8 @@ public class WordDetailActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.word_detail_collect_iv:
+                needCollect = !needCollect;
+                setupCollectStyle();
                 break;
             case R.id.word_detail_extend_basic_tv:
                 showExtBasic();
@@ -147,6 +165,16 @@ public class WordDetailActivity extends BaseActivity {
             case R.id.word_detail_extend_detail_tv:
                 showExtDetail();
                 break;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (isCollected && !needCollect) {
+            DBManager.deleteCollectWord(mWord);
+        } else if (!isCollected && needCollect) {
+            DBManager.insertCollectWord(mWord);
         }
     }
 }

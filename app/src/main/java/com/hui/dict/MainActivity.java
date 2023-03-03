@@ -67,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent();
         switch (view.getId()) {
             case R.id.main_setting_iv:
+                intent.setClass(this, SettingActivity.class);
+                startActivity(intent);
                 break;
             case R.id.main_search_iv:
                 String word = mSearchET.getText().toString();

@@ -46,6 +46,9 @@ public class ChengyuDetailActivity extends BaseActivity {
     private List<String> mTongyiGridAdapterData;
     private List<String> mFanyiGridAdapterData;
 
+    private boolean isCollected;
+    private boolean needCollect;
+
     public static Intent newIntent(Context context, String chengyu) {
         Intent intent = new Intent(context, ChengyuDetailActivity.class);
         intent.putExtra(KEY_CHENGYU, chengyu);
@@ -58,6 +61,9 @@ public class ChengyuDetailActivity extends BaseActivity {
         setContentView(R.layout.activity_chengyu_detail);
 
         mChengyu = getIntent().getStringExtra(KEY_CHENGYU);
+
+        isCollected = DBManager.isChengyuCollected(mChengyu);
+        needCollect = isCollected;
 
         initView();
 
@@ -92,6 +98,16 @@ public class ChengyuDetailActivity extends BaseActivity {
         mHuyiTV = findViewById(R.id.chengyu_detail_huyi_content_tv);
         mTongyiGV = findViewById(R.id.chengyu_detail_tongyi_gv);
         mFanyiGV = findViewById(R.id.chengyu_detail_fanyi_gv);
+
+        setupCollectStyle();
+    }
+
+    private void setupCollectStyle() {
+        if (needCollect) {
+            mCollectIV.setImageResource(R.mipmap.ic_collection_fs);
+        } else {
+            mCollectIV.setImageResource(R.mipmap.ic_collection);
+        }
     }
 
     @Override
@@ -172,7 +188,19 @@ public class ChengyuDetailActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.chengyu_detail_collect_iv:
+                needCollect = !needCollect;
+                setupCollectStyle();
                 break;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (isCollected && !needCollect) {
+            DBManager.deleteCollectChengyu(mChengyu);
+        } else if (!isCollected && needCollect) {
+            DBManager.insertCollectChengyu(mChengyu);
         }
     }
 }

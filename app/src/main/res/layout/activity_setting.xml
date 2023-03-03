@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SettingActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/setting_back_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:onClick="onClick"
+            android:src="@mipmap/ic_back" />
+
+        <TextView
+            style="@style/TitleTextViewStyle"
+            android:text="@string/setting" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/setting_collect_tv"
+        style="@style/SettingTextViewStyle"
+        android:layout_marginTop="20dp"
+        android:text="@string/collect"
+        app:drawableStartCompat="@mipmap/ic_soucang" />
+
+    <View style="@style/SettingDividerLineStyle" />
+
+    <TextView
+        android:id="@+id/setting_feedback_tv"
+        style="@style/SettingTextViewStyle"
+        android:text="@string/feedback"
+        app:drawableStartCompat="@mipmap/mine_customer_service" />
+
+    <View style="@style/SettingDividerLineStyle" />
+
+    <TextView
+        android:id="@+id/setting_evalute_tv"
+        style="@style/SettingTextViewStyle"
+        android:text="@string/evaluate"
+        app:drawableStartCompat="@mipmap/mine_evaluate" />
+
+    <View style="@style/SettingDividerLineStyle" />
+
+    <TextView
+        android:id="@+id/setting_share_tv"
+        style="@style/SettingTextViewStyle"
+        android:text="@string/share"
+        app:drawableStartCompat="@mipmap/mine_share" />
+
+    <View style="@style/SettingDividerLineStyle" />
+
+    <TextView
+        android:id="@+id/setting_about_tv"
+        style="@style/SettingTextViewStyle"
+        android:text="@string/about_us"
+        app:drawableStartCompat="@mipmap/mine_about_us" />
+
+    <View style="@style/SettingDividerLineStyle" />
+</LinearLayout>

@@ -81,4 +81,21 @@
         <item name="android:background">@drawable/tv_chengyu_explain_section_title_background</item>
     </style>
 
+    <style name="SettingTextViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:drawablePadding">10dp</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:onClick">onClick</item>
+    </style>
+
+    <style name="SettingDividerLineStyle">
+        <item name="android:background">@color/grey_200</item>
+        <item name="android:layout_height">2dp</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
 </resources>
